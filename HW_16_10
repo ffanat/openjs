@@ -1,51 +1,72 @@
 
-var x = [5,11,2,4,6,27,13,26,0,-5,14,22,16];
-var y = [3,4,5,55,17,6,11,14,0,13];
-var z = x.filter(i => !y.includes(i));
-
-console.log(z);
 
 
-var fibIter = function(n) {
-    var a = 0, b = 1, f = 1;
-    for(var i = 2; i <= n; i++) {
-        f = a + b;
-        a = b;
-        b = f;
+function bubbleSort(arr) {  
+        for (var i = (arr.length - 1); i >= 0; i--) {
+                for (var j = (arr.length - i); j > 0; j--) {
+           
+            if (arr[j] < arr[j - 1]) {
+              
+                var tmp = arr[j];
+                arr[j] = arr[j - 1];
+                arr[j - 1] = tmp;
+            }
+        }
     }
-    return f;
-};
-
-console.log(fibIter(12));
-
-
-var fibRecur = function(n) {
-    if(n <= 2) {
-        return 1;
-    } else {
-        return fibRecur(n - 1) + fibRecur(n - 2);
-    }
-};
-
-console.log(fibRecur(11));
-
-
-function factRecur(num)
-{
-    if (num === 0)
-      { return 1 }
-    else
-      { return num * factRecur(num - 1) }
 }
 
-console.log(factRecur(5));
+var y = [56,32,-24,160,80,88,-8,40];
 
-function factIter(num)
-{
-    var a = 1;
-    for (var i = 2; i <= num; i++)
-        a *= i;
+bubbleSort(y);
+console.log(y);
+
+
+function gcd(arr)
+{   
+    var n = arr.length, x = Math.abs(arr[0]);
+    for (var i = 1; i < n; i++)
+     { var y = Math.abs(arr[i]);
+       while (x && y){ x > y ? x %= y : y %= x; }
+       x += y;
+     }
+    return x;
+}
+
+console.log(gcd(y));
+
+
+function lcm(arr)
+{   
+    var  n = arr.length, a = Math.abs(arr[0]);
+    for (var i = 1; i < n; i++)
+     { var b = Math.abs(arr[i]), c = a;
+       while (a && b){ a > b ? a %= b : b %= a; } 
+       a = Math.abs(c*arr[i])/(a+b);
+     }
     return a;
 }
 
-console.log(factIter(6));
+
+console.log(lcm(y));
+
+
+function insertionSort(arr) {
+    for (var i = 1; i < arr.length; i++) {
+        var tmp = arr[i];
+        for (var j = i - 1; j >= 0 && (arr[j] > tmp); j--) {
+            arr[j + 1] = arr[j];
+        }
+        arr[j + 1] = tmp;
+    }
+}
+
+insertionSort(y);
+console.log(y);
+
+
+var newArr = y.map(x => x / 2);
+console.log(newArr);
+
+var newArrReduce = y.reduce((sum, x) => (sum += x / 2), 0);
+console.log(newArrReduce);
+
