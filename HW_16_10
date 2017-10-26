@@ -1,0 +1,51 @@
+
+var x = [5,11,2,4,6,27,13,26,0,-5,14,22,16];
+var y = [3,4,5,55,17,6,11,14,0,13];
+var z = x.filter(i => !y.includes(i));
+
+console.log(z);
+
+
+var fibIter = function(n) {
+    var a = 0, b = 1, f = 1;
+    for(var i = 2; i <= n; i++) {
+        f = a + b;
+        a = b;
+        b = f;
+    }
+    return f;
+};
+
+console.log(fibIter(12));
+
+
+var fibRecur = function(n) {
+    if(n <= 2) {
+        return 1;
+    } else {
+        return fibRecur(n - 1) + fibRecur(n - 2);
+    }
+};
+
+console.log(fibRecur(11));
+
+
+function factRecur(num)
+{
+    if (num === 0)
+      { return 1 }
+    else
+      { return num * factRecur(num - 1) }
+}
+
+console.log(factRecur(5));
+
+function factIter(num)
+{
+    var a = 1;
+    for (var i = 2; i <= num; i++)
+        a *= i;
+    return a;
+}
+
+console.log(factIter(6));
